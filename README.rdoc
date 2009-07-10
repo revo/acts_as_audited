@@ -1,0 +1,7 @@
+= acts_as_audited
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 =. See LICENSE for details.
