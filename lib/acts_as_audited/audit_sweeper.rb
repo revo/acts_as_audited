@@ -42,7 +42,10 @@ module CollectiveIdea #:nodoc:
 
             # disable ActiveRecord callbacks, which are replaced by the AuditSweeper
             model.send :disable_auditing_callbacks
-            model.add_observer(AuditSweeper.instance)
+            observer_peers = model.instance_variable_get("@observer_peers")
+            unless observer_peers && observer_peers.include?(AuditSweeper.instance)
+              model.add_observer(AuditSweeper.instance)
+            end
           end
 
           class_eval do
